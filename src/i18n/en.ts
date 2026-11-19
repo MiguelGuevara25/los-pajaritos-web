@@ -31,7 +31,7 @@ export const en = {
   hero: {
     ...es.hero,
     eyebrow: "Peruvian jungle",
-    subtitle: "Countryside restaurant in the Peruvian jungle",
+    subtitle: "Countryside restaurant in Tambopata",
     image: {
       ...es.hero.image,
       alt: "Palm-thatched dining hall surrounded by garden and forest at sunset",
@@ -257,5 +257,6 @@ export const en = {
     followTitle: "Follow us",
     rights: "All rights reserved.",
     backToTop: "Back to top",
+    infoDev: "Designed and developed by"
   },
-} as const;
+};

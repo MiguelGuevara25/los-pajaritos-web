@@ -97,13 +97,28 @@ const year = new Date().getFullYear();
       <p>
         © {year} {brand.name}. {footer.rights}
       </p>
-      <a
+
+      <div class="flex items-center justify-center gap-1 text-xs text-on-dark-muted">
+        <p class="text-xs text-on-dark-muted">
+          {footer.infoDev}{" "}
+          <a
+            href="https://encodev.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-on-dark transition-colors hover:text-on-dark-muted"
+          >
+            Encodev
+          </a>
+        </p>
+      </div>
+
+      <!-- <a
         href="#inicio"
         class="inline-flex items-center gap-2 transition-colors hover:text-on-dark"
       >
         {footer.backToTop}
         <ArrowUp aria-hidden class="size-4" />
-      </a>
+      </a> -->
     </div>
   </div>
 </footer>

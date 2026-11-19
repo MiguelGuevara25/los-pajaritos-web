@@ -11,14 +11,14 @@ import lugarEntrada from "../assets/lugar-entrada.webp";
 
 export const es = {
   meta: {
-    title: "Los Pajaritos — Restaurante campestre de la selva peruana",
+    title: "Los Pajaritos — Restaurante campestre en Tambopata",
     description:
-      "Cocina amazónica a la leña en un restaurante campestre de la selva peruana. Mira la carta, conoce el lugar y descubre cómo llegar.",
+      "Cocina amazónica a la leña en un restaurante campestre en Tambopata. Mira la carta, conoce el lugar y descubre cómo llegar.",
   },
 
   brand: {
     name: "Los Pajaritos",
-    tagline: "Restaurante campestre de la selva peruana",
+    tagline: "Restaurante campestre en Tambopata",
   },
 
   nav: [
@@ -40,18 +40,18 @@ export const es = {
   hero: {
     eyebrow: "Selva peruana",
     title: "Los Pajaritos",
-    subtitle: "Restaurante campestre de la selva peruana",
+    subtitle: "Restaurante campestre en Tambopata",
     image: {
-      src: heroLocal,
+      src: heroLocal.src,
       alt: "Comedor techado con hojas de palmera, rodeado de jardín y bosque, al atardecer",
-      width: 1920,
-      height: 1088,
+      width: heroLocal.width,
+      height: heroLocal.height,
     },
     mobileImage: {
-      src: heroLocalMobile,
+      src: heroLocalMobile.src,
       alt: "Comedor techado con hojas de palmera, rodeado de jardín y bosque, al atardecer",
-      width: 900,
-      height: 1350,
+      width: heroLocalMobile.width,
+      height: heroLocalMobile.height,
     },
     primaryCta: "Ver la carta",
     secondaryCta: "Cómo llegar",
@@ -67,10 +67,10 @@ export const es = {
         description:
           "Arroz con palillo y gallina de corral, envuelto en hoja de bijao y cocido a fuego lento.",
         image: {
-          src: platoJuane,
+          src: platoJuane.src,
           alt: "Juane abierto sobre hoja de bijao, con arroz amarillo, gallina, aceituna y huevo",
-          width: 1024,
-          height: 768,
+          width: platoJuane.width,
+          height: platoJuane.height,
         },
       },
       {
@@ -78,10 +78,10 @@ export const es = {
         description:
           "Plátano verde asado y majado con chicharrón, acompañado de cecina ahumada.",
         image: {
-          src: platoTacacho,
+          src: platoTacacho.src,
           alt: "Bola de tacacho con chicharrón junto a lonjas de cecina en plato de barro",
-          width: 1024,
-          height: 768,
+          width: platoTacacho.width,
+          height: platoTacacho.height,
         },
       },
       {
@@ -89,10 +89,10 @@ export const es = {
         description:
           "Pescado de río a la brasa en hoja de bijao, con tomate, cebolla y sacha culantro.",
         image: {
-          src: platoPatarashca,
+          src: platoPatarashca.src,
           alt: "Pescado asado envuelto en hojas de bijao abiertas, con tomate y cebolla",
-          width: 1024,
-          height: 768,
+          width: platoPatarashca.width,
+          height: platoPatarashca.height,
         },
       },
       {
@@ -100,10 +100,10 @@ export const es = {
         description:
           "Sopa espesa de gallina con maní molido, maíz, yuca y sacha culantro.",
         image: {
-          src: platoInchicapi,
+          src: platoInchicapi.src,
           alt: "Sopa cremosa de gallina con maíz y yuca en cuenco de barro",
-          width: 1024,
-          height: 768,
+          width: platoInchicapi.width,
+          height: platoInchicapi.height,
         },
       },
     ],
@@ -184,10 +184,10 @@ export const es = {
     ],
     signature: "La familia de Los Pajaritos",
     image: {
-      src: historiaFundadores,
+      src: historiaFundadores.src,
       alt: "Pareja de cocineros con mandil, sonriendo junto al fogón de leña de la cocina",
-      width: 896,
-      height: 1120,
+      width: historiaFundadores.width,
+      height: historiaFundadores.height,
     },
   },
   place: {
@@ -196,25 +196,25 @@ export const es = {
     intro:
       "Un comedor techado con hojas de palmera, mesas en el jardín y una entrada entre plantas. Así te recibimos.",
     main: {
-      src: lugarComedor,
+      src: lugarComedor.src,
       alt: "Comedor de madera bajo techo de palmera, abierto hacia el jardín y el bosque",
-      width: 1600,
-      height: 1056,
+      width: lugarComedor.width,
+      height: lugarComedor.height,
       caption: "El comedor",
     },
     secondary: [
       {
-        src: lugarJardin,
+        src: lugarJardin.src,
         alt: "Mesas de madera sobre el césped, a la sombra de árboles grandes",
-        width: 1024,
-        height: 768,
+        width: lugarJardin.width,
+        height: lugarJardin.height,
         caption: "Mesas en el jardín",
       },
       {
-        src: lugarEntrada,
+        src: lugarEntrada.src,
         alt: "Portón de madera y sendero de tierra que lleva al comedor",
-        width: 1024,
-        height: 768,
+        width: lugarEntrada.width,
+        height: lugarEntrada.height,
         caption: "La entrada",
       },
     ],
@@ -310,5 +310,6 @@ export const es = {
     followTitle: "Síguenos",
     rights: "Todos los derechos reservados.",
     backToTop: "Volver arriba",
+    infoDev: "Diseñado y desarrollado por",
   },
 };
