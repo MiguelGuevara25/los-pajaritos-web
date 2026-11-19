@@ -1,0 +1,43 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const currentLocale = Astro.currentLocale ?? "es";
+const isEs = currentLocale === "es";
+---
+
+<div
+  class:list={[
+    "inline-flex items-center rounded-full border border-current/25 p-0.5 text-xs font-sans tracking-wide transition-colors",
+    className,
+  ]}
+  role="group"
+  aria-label="Selector de idioma"
+>
+  <a
+    href="/"
+    class:list={[
+      "rounded-full px-2.5 py-0.5 font-semibold transition-all duration-200",
+      isEs
+        ? "bg-terracotta text-white shadow-xs"
+        : "opacity-60 hover:opacity-100",
+    ]}
+    aria-current={isEs ? "page" : undefined}
+  >
+    ES
+  </a>
+  <a
+    href="/en"
+    class:list={[
+      "rounded-full px-2.5 py-0.5 font-semibold transition-all duration-200",
+      !isEs
+        ? "bg-terracotta text-white shadow-xs"
+        : "opacity-60 hover:opacity-100",
+    ]}
+    aria-current={!isEs ? "page" : undefined}
+  >
+    EN
+  </a>
+</div>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 
 import { ui, defaultLang } from "../i18n/ui";
 import { ArrowDown, MapPin } from "@lucide/astro";
@@ -12,6 +13,8 @@ const { hero } = t;
 ---
 
 <Layout>
+  <Header />
+
   <section
     id="inicio"
     class="on-dark relative isolate flex min-h-[88svh] items-end overflow-hidden md:min-h-[92vh]"
