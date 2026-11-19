@@ -1,0 +1,109 @@
+---
+import { ArrowUp, MapPin, MessageCircle } from "@lucide/astro";
+import { ui, defaultLang } from "../i18n/ui";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { footer, brand, nav, contact, visit } = t;
+
+const socials = contact.socials;
+
+const year = new Date().getFullYear();
+---
+
+<footer class="on-dark bg-forest text-on-dark">
+  <div class="mx-auto max-w-6xl px-5 pt-16 md:px-8 md:pt-20">
+    <div class="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-12 md:gap-x-10">
+      <div class="col-span-2 md:col-span-5">
+        <p class="font-display text-4xl font-medium md:text-5xl">
+          {brand.name}
+        </p>
+        <p class="mt-3 max-w-xs text-on-dark-muted">{brand.tagline}</p>
+      </div>
+
+      <nav aria-label={footer.sectionsTitle} class="md:col-span-2">
+        <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-sand">
+          {footer.sectionsTitle}
+        </h2>
+        <ul class="mt-4 space-y-3">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={`#${item.id}`}
+                class="text-on-dark-muted transition-colors hover:text-on-dark"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="md:order-last md:col-span-2">
+        <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-sand">
+          {footer.followTitle}
+        </h2>
+        <ul class="mt-4 space-y-3">
+          {socials.map((s) => {
+            // const Icon = socialIcons[s.network];
+            return (
+              <li>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-on-dark-muted transition-colors hover:text-on-dark"
+                >
+                  {/* <Icon aria-hidden class="size-4" /> */}
+                  {s.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div class="col-span-2 md:col-span-3">
+        <h2 class="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-sand">
+          {footer.contactTitle}
+        </h2>
+        <ul class="mt-4 space-y-4">
+          <li class="flex gap-3">
+            <MapPin aria-hidden class="mt-0.5 size-4 shrink-0 text-sand" />
+            <address class="not-italic text-on-dark-muted">
+              {visit.address.map((line) => (
+                <span class="block">{line}</span>
+              ))}
+            </address>
+          </li>
+
+          <li>
+            <a
+              href="https://wa.me/51999999999?text=Hello,%20I'd%20like%20to%20book%20a%20table%20at%20Los%20Pajaritos."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 text-on-dark-muted transition-colors hover:text-on-dark"
+            >
+              <MessageCircle aria-hidden class="size-4 shrink-0 text-sand" />
+              WhatsApp {contact.whatsappDisplay}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 flex flex-col-reverse gap-4 border-t border-on-dark-line py-6 text-sm text-on-dark-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        © {year} {brand.name}. {footer.rights}
+      </p>
+      <a
+        href="#inicio"
+        class="inline-flex items-center gap-2 transition-colors hover:text-on-dark"
+      >
+        {footer.backToTop}
+        <ArrowUp aria-hidden class="size-4" />
+      </a>
+    </div>
+  </div>
+</footer>
