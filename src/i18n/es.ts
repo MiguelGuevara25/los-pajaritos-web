@@ -1,3 +1,14 @@
+import heroLocal from "../assets/hero-local.webp";
+import heroLocalMobile from "../assets/hero-local-mobile.webp";
+import platoJuane from "../assets/plato-juane.webp";
+import platoTacacho from "../assets/plato-tacacho.webp";
+import platoPatarashca from "../assets/plato-patarashca.webp";
+import platoInchicapi from "../assets/plato-inchicapi.webp";
+import historiaFundadores from "../assets/historia-fundadores.webp";
+import lugarComedor from "../assets/lugar-comedor.webp";
+import lugarJardin from "../assets/lugar-jardin.webp";
+import lugarEntrada from "../assets/lugar-entrada.webp";
+
 export const es = {
   meta: {
     title: "Los Pajaritos — Restaurante campestre de la selva peruana",
@@ -24,6 +35,219 @@ export const es = {
     languageLabel: "Idioma",
     mainNavLabel: "Principal",
     placeholderReview: "Texto de ejemplo",
+  },
+
+  hero: {
+    eyebrow: "Selva peruana",
+    title: "Los Pajaritos",
+    subtitle: "Restaurante campestre de la selva peruana",
+    image: {
+      src: heroLocal,
+      alt: "Comedor techado con hojas de palmera, rodeado de jardín y bosque, al atardecer",
+      width: 1920,
+      height: 1088,
+    },
+    mobileImage: {
+      src: heroLocalMobile,
+      alt: "Comedor techado con hojas de palmera, rodeado de jardín y bosque, al atardecer",
+      width: 900,
+      height: 1350,
+    },
+    primaryCta: "Ver la carta",
+    secondaryCta: "Cómo llegar",
+  },
+  kitchen: {
+    eyebrow: "Nuestra cocina",
+    title: "Sabores de la selva, cocinados con calma",
+    intro:
+      "Hoja de bijao, fogón de leña y productos de la chacra y del río. Estos son los platos que más piden quienes nos visitan.", // PENDIENTE: validar con el cliente
+    featured: [
+      {
+        name: "Juane de gallina",
+        description:
+          "Arroz con palillo y gallina de corral, envuelto en hoja de bijao y cocido a fuego lento.",
+        image: {
+          src: platoJuane,
+          alt: "Juane abierto sobre hoja de bijao, con arroz amarillo, gallina, aceituna y huevo",
+          width: 1024,
+          height: 768,
+        },
+      },
+      {
+        name: "Tacacho con cecina",
+        description:
+          "Plátano verde asado y majado con chicharrón, acompañado de cecina ahumada.",
+        image: {
+          src: platoTacacho,
+          alt: "Bola de tacacho con chicharrón junto a lonjas de cecina en plato de barro",
+          width: 1024,
+          height: 768,
+        },
+      },
+      {
+        name: "Patarashca de pescado",
+        description:
+          "Pescado de río a la brasa en hoja de bijao, con tomate, cebolla y sacha culantro.",
+        image: {
+          src: platoPatarashca,
+          alt: "Pescado asado envuelto en hojas de bijao abiertas, con tomate y cebolla",
+          width: 1024,
+          height: 768,
+        },
+      },
+      {
+        name: "Inchicapi",
+        description:
+          "Sopa espesa de gallina con maní molido, maíz, yuca y sacha culantro.",
+        image: {
+          src: platoInchicapi,
+          alt: "Sopa cremosa de gallina con maíz y yuca en cuenco de barro",
+          width: 1024,
+          height: 768,
+        },
+      },
+    ],
+  },
+  menu: {
+    showPrices: false, // PENDIENTE: el cliente debe autorizar los precios
+    currency: "S/",
+    pdfUrl: undefined,
+    pdfLabel: "Descargar carta en PDF",
+    openLabel: "Ver carta completa",
+    closeLabel: "Ocultar carta completa",
+    title: "Carta completa",
+    note: "La carta puede variar según la temporada y la pesca del día.",
+    // PENDIENTE: reemplazar con la carta real del restaurante
+    categories: [
+      {
+        name: "Para empezar",
+        items: [
+          {
+            name: "Tacacho con chicharrón",
+            description: "Plátano asado y majado",
+          },
+          {
+            name: "Chonta en ensalada",
+            description: "Palmito fresco, limón y cebolla",
+          },
+          { name: "Yuca frita con ají de cocona" },
+        ],
+      },
+      {
+        name: "Platos de fondo",
+        items: [
+          { name: "Juane de gallina", description: "En hoja de bijao" },
+          {
+            name: "Tacacho con cecina",
+            description: "Cecina ahumada de la casa",
+          },
+          {
+            name: "Patarashca de pescado",
+            description: "Pescado de río a la brasa",
+          },
+          { name: "Cecina con plátano y ensalada" },
+          { name: "Gallina de corral al horno de barro" },
+        ],
+      },
+      {
+        name: "Sopas",
+        items: [
+          { name: "Inchicapi", description: "Gallina, maní y maíz" },
+          { name: "Caldo de gallina regional" },
+        ],
+      },
+      {
+        name: "Bebidas",
+        items: [
+          { name: "Refresco de cocona" },
+          { name: "Refresco de aguaje" },
+          { name: "Chicha de maíz morado" },
+          { name: "Café de la zona" },
+        ],
+      },
+      {
+        name: "Postres",
+        items: [
+          { name: "Plátano maduro al horno con miel" },
+          { name: "Dulce de cocona" },
+        ],
+      },
+    ],
+  },
+  story: {
+    eyebrow: "Nuestra historia",
+    title: "Una mesa que empezó en el patio de casa",
+    // PENDIENTE: reemplazar con la historia real y los nombres del equipo
+    paragraphs: [
+      "Los Pajaritos nació como un almuerzo de domingo para la familia y los vecinos, bajo los árboles donde cada mañana llegan las aves que le dan nombre.",
+      "Con los años, el patio se volvió comedor. La cocina sigue a cargo de la familia: recetas aprendidas en casa, leña del monte y productos que llegan de chacras cercanas.",
+    ],
+    signature: "La familia de Los Pajaritos",
+    image: {
+      src: historiaFundadores,
+      alt: "Pareja de cocineros con mandil, sonriendo junto al fogón de leña de la cocina",
+      width: 896,
+      height: 1120,
+    },
+  },
+  place: {
+    eyebrow: "El lugar",
+    title: "Comer al aire libre, entre árboles",
+    intro:
+      "Un comedor techado con hojas de palmera, mesas en el jardín y una entrada entre plantas. Así te recibimos.",
+    main: {
+      src: lugarComedor,
+      alt: "Comedor de madera bajo techo de palmera, abierto hacia el jardín y el bosque",
+      width: 1600,
+      height: 1056,
+      caption: "El comedor",
+    },
+    secondary: [
+      {
+        src: lugarJardin,
+        alt: "Mesas de madera sobre el césped, a la sombra de árboles grandes",
+        width: 1024,
+        height: 768,
+        caption: "Mesas en el jardín",
+      },
+      {
+        src: lugarEntrada,
+        alt: "Portón de madera y sendero de tierra que lleva al comedor",
+        width: 1024,
+        height: 768,
+        caption: "La entrada",
+      },
+    ],
+    amenitiesTitle: "Para tu visita",
+    // Solo se muestran los servicios con confirmed: true. PENDIENTE: confirmar con el cliente.
+    amenities: [
+      { label: "Estacionamiento", confirmed: false },
+      { label: "Área para niños", confirmed: false },
+      { label: "Espacios techados", confirmed: false },
+      { label: "Atención a grupos", confirmed: false },
+    ],
+  },
+  reviews: {
+    enabled: true,
+    eyebrow: "Lo que dicen quienes nos visitan",
+    title: "Reseñas",
+    // PENDIENTE: reemplazar por 2–3 reseñas reales con su fuente (Google, TripAdvisor, Facebook)
+    items: [
+      {
+        quote:
+          "Aquí irá una reseña breve y real de un visitante, copiada tal como fue publicada.",
+        author: "Nombre del visitante",
+        source: "Google",
+        placeholder: true,
+      },
+      {
+        quote:
+          "Segunda reseña real: idealmente sobre la comida, la atención o el ambiente del lugar.",
+        author: "Nombre del visitante",
+        source: "TripAdvisor",
+        placeholder: true,
+      },
+    ],
   },
 
   visit: {
