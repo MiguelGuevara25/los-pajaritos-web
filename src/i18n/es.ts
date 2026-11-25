@@ -8,8 +8,9 @@ import historiaFundadores from "../assets/historia-fundadores.webp";
 import lugarComedor from "../assets/lugar-comedor.webp";
 import lugarJardin from "../assets/lugar-jardin.webp";
 import lugarEntrada from "../assets/lugar-entrada.webp";
+import type { SiteContent } from "../types/index.type";
 
-export const es = {
+export const es: SiteContent = {
   meta: {
     title: "Los Pajaritos — Restaurante campestre en Tambopata",
     description:

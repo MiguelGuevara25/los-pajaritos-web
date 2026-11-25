@@ -1,6 +1,7 @@
+import type { SiteContent } from "../types/index.type";
 import { es } from "./es";
 
-export const en = {
+export const en: SiteContent = {
   meta: {
     title: "Los Pajaritos — Countryside restaurant in Tambopata",
     description:
@@ -257,6 +258,6 @@ export const en = {
     followTitle: "Follow us",
     rights: "All rights reserved.",
     backToTop: "Back to top",
-    infoDev: "Designed and developed by"
+    infoDev: "Designed and developed by",
   },
 };

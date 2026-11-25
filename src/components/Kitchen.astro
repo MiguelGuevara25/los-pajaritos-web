@@ -1,0 +1,215 @@
+---
+import { ui, defaultLang } from "../i18n/ui";
+import { formatPrice, featuredDishes } from "../utils";
+import Reveal from "./Reveal.astro";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { kitchen, menu } = t;
+
+const dishes = featuredDishes(kitchen.featured);
+const panelId = "kitchen-menu-panel";
+---
+
+<section id="carta" class="py-20 md:py-32">
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <!-- Encabezado -->
+    <div class="grid gap-6 md:grid-cols-12 md:items-end">
+      <Reveal class="md:col-span-7">
+        <p class="eyebrow">{kitchen.eyebrow}</p>
+        <h2 class="mt-4 text-4xl font-medium leading-tight md:text-6xl">
+          {kitchen.title}
+        </h2>
+      </Reveal>
+
+      <Reveal delay={120} class="md:col-span-5">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          {kitchen.intro}
+        </p>
+      </Reveal>
+    </div>
+
+    <!-- Platos destacados -->
+    <ul class="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+      {dishes.map((dish, i) => {
+        const price = formatPrice(dish.price, menu);
+
+        return (
+          <Reveal as="li" delay={i * 90} class="group">
+            <div class="overflow-hidden rounded-sm bg-sand">
+              <img
+                src={dish.image.src}
+                alt={dish.image.alt}
+                width={dish.image.width}
+                height={dish.image.height}
+                loading="lazy"
+                decoding="async"
+                class="img-zoom aspect-4/3 w-full object-cover"
+              />
+            </div>
+
+            <div class="mt-5 flex items-baseline justify-between gap-4">
+              <h3 class="text-2xl font-medium">{dish.name}</h3>
+
+              {price && (
+                <span class="shrink-0 text-sm font-semibold text-terracotta">
+                  {price}
+                </span>
+              )}
+            </div>
+
+            <div aria-hidden="true" class="rule-terracotta mt-3 w-10"></div>
+
+            <p class="mt-3 leading-relaxed text-muted-foreground">
+              {dish.description}
+            </p>
+          </Reveal>
+        );
+      })}
+    </ul>
+
+    <!-- Información y botones -->
+    <Reveal class="mt-14 flex flex-col gap-3 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-muted-foreground">{menu.note}</p>
+
+      <div class="flex flex-col gap-3 sm:flex-row">
+        {menu.pdfUrl && (
+          <a
+            href={menu.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-sm border border-forest px-6 py-3 text-sm font-semibold text-forest transition-colors hover:bg-forest hover:text-white"
+          >
+            <!-- Icono FileText -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z" />
+              <path d="M14 2v6h6" />
+              <path d="M8 13h8" />
+              <path d="M8 17h8" />
+              <path d="M8 9h2" />
+            </svg>
+
+            {menu.pdfLabel}
+          </a>
+        )}
+
+        <button
+          type="button"
+          data-menu-toggle
+          aria-expanded="false"
+          aria-controls={panelId}
+          class="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:opacity-90"
+        >
+          <span data-menu-label>{menu.openLabel}</span>
+
+          <!-- Icono ChevronDown -->
+          <svg
+            data-menu-icon
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="transition-transform duration-300"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
+      </div>
+    </Reveal>
+
+    <!-- Menú completo -->
+    <div
+      id={panelId}
+      hidden
+      class="mt-10 animate-in fade-in slide-in-from-top-2 rounded-sm border border-border bg-card px-6 py-10 duration-500 md:px-12 md:py-14"
+      data-menu-panel
+    >
+      <h3 class="text-3xl font-medium md:text-4xl">{menu.title}</h3>
+
+      <div class="mt-10 grid gap-x-16 gap-y-12 md:grid-cols-2">
+        {menu.categories.map((cat) => (
+          <div>
+            <h4 class="eyebrow">{cat.name}</h4>
+
+            <ul class="mt-5 space-y-4">
+              {cat.items.map((item) => {
+                const price = formatPrice(item.price, menu);
+
+                return (
+                  <li>
+                    <div class="flex items-baseline gap-3">
+                      <span class="font-display text-lg">{item.name}</span>
+
+                      {price && (
+                        <>
+                          <span aria-hidden="true" class="leader"></span>
+                          <span class="text-sm font-semibold">{price}</span>
+                        </>
+                      )}
+                    </div>
+
+                    {item.description && (
+                      <p class="text-sm text-muted-foreground">
+                        {item.description}
+                      </p>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll("[data-menu-toggle]");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const panelId = button.getAttribute("aria-controls");
+      if (!panelId) return;
+
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute("aria-expanded", String(!isOpen));
+      panel.hidden = isOpen;
+
+      const label = button.querySelector("[data-menu-label]");
+      const icon = button.querySelector("[data-menu-icon]");
+
+      if (label) {
+        label.textContent = isOpen
+          ? (button.getAttribute("data-open-label") ?? label.textContent)
+          : (button.getAttribute("data-close-label") ?? label.textContent);
+      }
+
+      if (icon) {
+        icon.classList.toggle("rotate-180", !isOpen);
+      }
+    });
+  });
+</script>
