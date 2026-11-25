@@ -2,6 +2,16 @@
 import "../styles/global.css";
 
 const currentLocale = Astro.currentLocale ?? "es";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Los Pajaritos - Restaurante Campestre en Tambopata",
+  description = "Restaurante campestre de la selva peruana.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -9,12 +19,81 @@ const currentLocale = Astro.currentLocale ?? "es";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+
     <meta name="generator" content={Astro.generator} />
-    <title>Los Pajaritos - Restaurante Campestre en Tambopata</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#203D2E" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <title>{title}</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap"
+    />
+
+    <slot name="head" />
+
+    <!-- Control de animaciones y loader -->
+    <script is:inline>
+      if (
+        window.matchMedia("(prefers-reduced-motion: no-preference)").matches
+      ) {
+        document.documentElement.dataset.motion = "1";
+
+        const start = performance.now();
+        let scheduled = false;
+
+        const hideLoader = () => {
+          if (scheduled) return;
+          scheduled = true;
+
+          const wait = Math.max(0, 900 - (performance.now() - start));
+
+          window.setTimeout(() => {
+            document.documentElement.dataset.loaded = "1";
+          }, wait);
+        };
+
+        if (document.readyState === "complete") {
+          hideLoader();
+        } else {
+          window.addEventListener("load", hideLoader, { once: true });
+        }
+
+        window.setTimeout(hideLoader, 3000);
+      }
+    </script>
   </head>
+
   <body>
+    <div id="site-loader" aria-hidden="true">
+      <div class="loader-inner">
+        <span class="loader-name">Los Pajaritos</span>
+
+        <span class="loader-dots">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+    </div>
+
     <slot />
   </body>
 </html>
