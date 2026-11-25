@@ -1,0 +1,47 @@
+---
+import Reveal from "./Reveal.astro";
+
+import { ui, defaultLang } from "../i18n/ui";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { story } = t;
+---
+
+<section id="historia" class="bg-sand py-20 md:py-32">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 md:grid-cols-12 md:items-center md:gap-16 md:px-8">
+    <Reveal variant="image" class="md:col-span-5">
+      <img
+        src={story.image.src}
+        alt={story.image.alt}
+        width={story.image.width}
+        height={story.image.height}
+        loading="lazy"
+        decoding="async"
+        class="aspect-4/5 w-full rounded-sm object-cover shadow-soft"
+      />
+    </Reveal>
+    <div class="md:col-span-7">
+      <Reveal>
+        <p class="eyebrow">{story.eyebrow}</p>
+        <h2 class="mt-4 text-4xl font-medium leading-tight md:text-5xl">
+          {story.title}
+        </h2>
+      </Reveal>
+
+      <div class="mt-8 space-y-5 text-lg leading-relaxed">
+        {story.paragraphs.map((p, i) => (
+          <Reveal as="p" delay={100 + i * 100}>
+            {p}
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay={320} class="mt-10 flex items-center gap-4">
+        <span aria-hidden class="rule-terracotta w-12" />
+        <p class="font-display text-xl italic">{story.signature}</p>
+      </Reveal>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+---
+import { ArrowDown, MapPin } from "@lucide/astro";
+import { ui, defaultLang } from "../i18n/ui";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { hero } = t;
+---
+
+<section
+  id="inicio"
+  class="on-dark relative isolate flex min-h-[88svh] items-end overflow-hidden md:min-h-[92vh]"
+>
+  <!-- <picture>
+      <source
+        media="(max-width: 767px)"
+        srcset={hero.mobileImage.src}
+        width={hero.mobileImage.width}
+        height={hero.mobileImage.height}
+      />
+      <img
+        src={hero.image.src}
+        alt={hero.image.alt}
+        width={hero.image.width}
+        height={hero.image.height}
+        fetchpriority="high"
+        decoding="async"
+        class="hero-zoom absolute inset-0 -z-20 h-full w-full object-cover object-[50%_40%] md:object-[50%_55%]"
+      />
+    </picture> -->
+  <div aria-hidden class="bg-scrim-hero absolute inset-0 -z-10" />
+
+  <div class="mx-auto w-full max-w-6xl px-5 pb-10 pt-28 md:px-8 md:pb-20">
+    <p class="hero-in eyebrow eyebrow-light" style="--reveal-delay: 100ms">
+      {hero.eyebrow}
+    </p>
+    <h1
+      class="hero-in mt-4 text-[clamp(3rem,12vw,7.5rem)] font-medium leading-[0.95] text-on-dark"
+      style="--reveal-delay: 200ms"
+    >
+      {hero.title}
+    </h1>
+    <p
+      class="hero-in mt-4 max-w-xl text-lg text-on-dark-muted md:text-xl"
+      style="--reveal-delay: 320ms"
+    >
+      {hero.subtitle}
+    </p>
+    <div
+      class="hero-in mt-8 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap"
+      style="--reveal-delay: 440ms"
+    >
+      <a
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-cream text-forest shadow-soft hover:bg-sand h-12 rounded-sm px-6 text-[0.95rem] tracking-wide"
+        href="#carta"
+      >
+        {hero.primaryCta}
+        <ArrowDown />
+      </a>
+
+      <a
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-on-dark/70 bg-transparent text-on-dark hover:bg-on-dark/10 h-12 rounded-sm px-6 text-[0.95rem] tracking-wide"
+        href="#visitanos"
+      >
+        <MapPin />
+        {hero.secondaryCta}
+      </a>
+    </div>
+  </div>
+</section>

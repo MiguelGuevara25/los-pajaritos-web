@@ -222,10 +222,10 @@ export const es: SiteContent = {
     amenitiesTitle: "Para tu visita",
     // Solo se muestran los servicios con confirmed: true. PENDIENTE: confirmar con el cliente.
     amenities: [
-      { label: "Estacionamiento", confirmed: false },
-      { label: "Área para niños", confirmed: false },
-      { label: "Espacios techados", confirmed: false },
-      { label: "Atención a grupos", confirmed: false },
+      { label: "Estacionamiento", confirmed: true },
+      { label: "Área para niños", confirmed: true },
+      { label: "Espacios techados", confirmed: true },
+      { label: "Atención a grupos", confirmed: true },
     ],
   },
   reviews: {

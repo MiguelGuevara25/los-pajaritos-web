@@ -1,0 +1,54 @@
+---
+import Reveal from "./Reveal.astro";
+import { ui, defaultLang } from "../i18n/ui";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { reviews } = t;
+---
+
+<section
+  aria-labelledby="resenas-titulo"
+  class="on-dark bg-forest py-20 text-on-dark md:py-28"
+>
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <Reveal>
+      <p class="eyebrow eyebrow-light">{reviews.eyebrow}</p>
+      <h2 id="resenas-titulo" class="sr-only">
+        {reviews.title}
+      </h2>
+    </Reveal>
+    <ul class="mt-10 grid gap-10 md:grid-cols-2 md:gap-16">
+      {reviews.items.slice(0, 3).map((r, i) => (
+        <Reveal as="li" delay={i * 120}>
+          <figure class="border-l border-terracotta pl-6">
+            {r.placeholder && (
+              <span class="mb-4 inline-block rounded-sm border border-on-dark-line px-2 py-0.5 text-xs uppercase tracking-widest text-on-dark-muted">
+                {t.ui.placeholderReview}
+              </span>
+            )}
+            <blockquote class="font-display text-2xl leading-snug md:text-3xl">
+              “{r.quote}”
+            </blockquote>
+            <figcaption class="mt-5 text-sm text-on-dark-muted">
+              {r.author} ·{" "}
+              {r.url ? (
+                <a
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="underline underline-offset-4"
+                >
+                  {r.source}
+                </a>
+              ) : (
+                r.source
+              )}
+            </figcaption>
+          </figure>
+        </Reveal>
+      ))}
+    </ul>
+  </div>
+</section>
