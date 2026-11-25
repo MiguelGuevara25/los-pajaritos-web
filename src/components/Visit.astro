@@ -1,0 +1,124 @@
+---
+import { Clock, MapPin, MessageCircle, Navigation, Users } from "@lucide/astro";
+import Reveal from "./Reveal.astro";
+
+import { ui, defaultLang } from "../i18n/ui";
+
+const lang = (Astro.currentLocale ?? defaultLang) as keyof typeof ui;
+const t = ui[lang];
+
+const { visit, contact } = t;
+---
+
+<section id="visitanos" class="py-20 md:py-32">
+  <div class="mx-auto max-w-6xl px-5 md:px-8">
+    <Reveal>
+      <p class="eyebrow">{visit.eyebrow}</p>
+      <h2 class="mt-4 text-4xl font-medium leading-tight md:text-6xl">
+        {visit.title}
+      </h2>
+    </Reveal>
+
+    <div class="mt-12 grid gap-12 md:grid-cols-12 md:gap-16">
+      <div class="md:col-span-5">
+        <dl class="space-y-8">
+          <Reveal class="flex gap-4">
+            <MapPin aria-hidden class="mt-1 size-5 shrink-0 text-terracotta" />
+            <div>
+              <dt class="text-sm font-semibold uppercase tracking-widest">
+                {visit.addressLabel}
+              </dt>
+              <dd class="mt-2 text-lg leading-relaxed">
+                {visit.address.map((line) => (
+                  <span class="block">{line}</span>
+                ))}
+              </dd>
+              <dd class="mt-3 text-muted-foreground">
+                <span class="font-medium text-foreground">
+                  {visit.referenceLabel}:{" "}
+                </span>
+                {visit.reference}
+              </dd>
+            </div>
+          </Reveal>
+          <Reveal delay={80} class="flex gap-4">
+            <Clock aria-hidden class="mt-1 size-5 shrink-0 text-terracotta" />
+            <div class="w-full">
+              <dt class="text-sm font-semibold uppercase tracking-widest">
+                {visit.hoursLabel}
+              </dt>
+              <dd class="mt-2">
+                <ul class="divide-y divide-border">
+                  {visit.hours.map((h) => (
+                    <li class="flex justify-between gap-4 py-2.5">
+                      <span>{h.days}</span>
+                      <span class="shrink-0 font-medium tabular-nums">
+                        {h.time}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          </Reveal>
+          <Reveal delay={160} class="flex gap-4">
+            <Users aria-hidden class="mt-1 size-5 shrink-0 text-terracotta" />
+            <div>
+              <dt class="text-sm font-semibold uppercase tracking-widest">
+                {visit.attentionLabel}
+              </dt>
+              <dd class="mt-2 text-lg leading-relaxed">{visit.attention}</dd>
+            </div>
+          </Reveal>
+        </dl>
+      </div>
+
+      <Reveal delay={120} class="md:col-span-7">
+        <div class="rounded-sm bg-sand p-6 md:p-10">
+          <h3 class="text-2xl font-medium md:text-3xl">
+            {visit.directionsTitle}
+          </h3>
+          <ol class="mt-6 space-y-5">
+            {visit.directions.map((step, i) => (
+              <li class="flex gap-4">
+                <span
+                  aria-hidden
+                  class="flex size-8 shrink-0 items-center justify-center rounded-full border border-terracotta font-display text-terracotta"
+                >
+                  {i + 1}
+                </span>
+                <p class="pt-1 text-lg leading-relaxed">{step}</p>
+              </li>
+            ))}
+          </ol>
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+            <a
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-12 rounded-sm px-6 text-[0.95rem] tracking-wide"
+              href={contact.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Navigation />
+              {visit.mapsCta}
+            </a>
+
+            <a
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-terracotta text-cream hover:bg-terracotta/90 h-12 rounded-sm px-6 text-[0.95rem] tracking-wide"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle />
+              {visit.whatsappCta}
+            </a>
+            <!-- <Button asChild variant="terracotta" size="xl">
+              <a href={wa} target="_blank" rel="noopener noreferrer">
+                <MessageCircle />
+                {visit.whatsappCta}
+              </a>
+            </Button> -->
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>
